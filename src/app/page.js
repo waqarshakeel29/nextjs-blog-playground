@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 
 async function getBlogs(){
   try {
-    const response = await fetch("http://localhost:3000/api/get-blogs", {
+    const response = await fetch("/api/get-blogs", {
       method: "GET",
       cache: 'no-store'
     });
@@ -11,7 +11,7 @@ async function getBlogs(){
     return res.data;
   } catch (error) {
     console.log(error);
-    return error;
+    return [];
   }
 }
 
