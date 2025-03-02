@@ -1,12 +1,10 @@
 import Link from "next/link";
 import styles from "./page.module.css";
+import { GET as getBlogsHandler } from "@/app/api/get-blogs/route";
 
-async function getBlogs(){
+async function getBlogs() {
   try {
-    const response = await fetch("/api/get-blogs", {
-      method: "GET",
-      cache: 'no-store'
-    });
+    const response = await getBlogsHandler();
     const res = await response.json();
     return res.data;
   } catch (error) {
@@ -14,6 +12,7 @@ async function getBlogs(){
     return [];
   }
 }
+
 
 export default async function Home() {
   const response = await getBlogs();
